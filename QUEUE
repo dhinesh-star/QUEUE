@@ -1,0 +1,73 @@
+#include <iostream>
+using namespace std;
+class Queue 
+{
+    int n,pu,po;
+    int *A;
+    public:
+    Queue(int size)
+    {
+        n=size;
+        A=new int[n];
+        pu=0;
+        po=0;
+    }
+    void push()
+    {
+        if(pu<n)
+        {
+            int a;
+            cout<<"Enter number to be added";
+            cin>>a;
+            A[pu++]=a;
+        }
+        else
+        {
+            cout<<"Queue is Full";
+        }
+    }
+    void pop()
+    {
+        if(po>=pu || po>=n)
+        {
+            cout<<"Queue is empty";
+        }
+        else
+        {
+            cout<<"Number removed is "<<A[po++]<<"\n";
+            A[(po-1)]=0;
+        }
+    }
+    void display()
+    {
+        int i;
+        cout<<"Queue Elements is\n";
+        for(i=po;i<pu;i++)
+        {
+            cout<<A[i]<<"\n";
+        }
+    }
+};
+int main()
+{
+    int len,k;
+    cout<<"The array size is";
+    cin>>len;
+    Queue Q(len);
+    cout<<"Enter 1-----> to push \n 2-----> to pop \n 3-----> to display \n 4-----> to exit";
+    cin>>k;
+    while(k!=4)
+    {
+        if(k==1)
+        Q.push();
+        else if(k==2)
+        Q.pop();
+        else if(k==3)
+        Q.display();
+        else
+        cout<<"Wrong choice";
+        cout<<"Enter 1-----> to push \n 2-----> to pop \n 3-----> to display \n 4-----> to exit";
+        cin>>k;
+    }
+    return(0);
+}
